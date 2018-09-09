@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>SISTEMA DE CADASTRO DE GRADE CURRICULAR</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css"> 
+    </head>
+    <body>
+        <div class = "div">
+            <form action = "GradeCurricular" method="POST">
+                <select name = "curso" class="combox">
+                    <option  value ="0">SELECIONE UM CURSO</option>
+                    <option  value ="170">CIÊNCIA DA COMPUTAÇÃO</option>
+                    <option  value ="171">ENGENHARIA DA COMPUTAÇÃO</option>
+                    <option  value ="172">SISTEMAS DE INFORMAÇÃO</option>
+                </select> <br/>
+                <button type="submit">CONSULTAR MATRIZ CURRICULAR</button>
+                <br/>
+            </form>
+            <form action="Disciplinas">
+                <button class = 'btn' type="submit">CONSULTAR DISCIPLINAS</button>
+            </form>
+        </div>
+    </body>
+</html>
