@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.Curriculo;
 import modelo.Disciplina;
 
-
 @WebServlet(name = "addGrade", urlPatterns = {"/addGrade"})
 public class addGrade extends HttpServlet {
 
@@ -40,17 +39,21 @@ public class addGrade extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"grade.css\">");
-            out.println("<title>CADASTRO DE DISCIPLINAS</title>");            
+            out.println("<title>CADASTRO DE DISCIPLINAS</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<form>"
+            out.println("<form action='GradeCurricular?curso=" + curso + "' method='POST'>"
+                    + "<button class='home'>VOLTAR</button></form>"
+                    + "</form>"
+                    + "<form>"
                     + "<div class = 'sec'>"
                     + "<section id = 'cad' class = 'sct'> "
                     + "<h2>CADASTRO</h2>"
                     + "CÓDIGO<div>" + "<select class = 'select' name = 'cadC'>"
                     + "<option value='-'>SELECIONE UMA DISCIPLINA</option>");
             for (int i = 0; i < disciplinas1.size(); i++) {
-                out.println("<option value ='" + disciplinas1.get(i).getCod() + "' >" + disciplinas1.get(i).getCod() + "</option>");
+                out.println("<option value ='" + disciplinas1.get(i).getCod() + "' >" + disciplinas1.get(i).getCod() + 
+                        " - "+disciplinas1.get(i).getNome()+"</option>");
             }
 
             out.println("</select>" + "</div>"
@@ -63,7 +66,7 @@ public class addGrade extends HttpServlet {
                     + "</form>");
             out.println("</body>");
             out.println("</html>");
-             // funções javascript
+            // funções javascript
             request.setCharacterEncoding("UTF-8");
             out.println("<script language = 'JavaScrpit' >");
             out.println("function cad(){");

@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Disciplina;
 
-
 @WebServlet(name = "upDisciplinas", urlPatterns = {"/upDisciplinas"})
 public class upDisciplinas extends HttpServlet {
 
@@ -34,38 +33,44 @@ public class upDisciplinas extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>EDIÇÃO DE DISCIPLINA</title>"); 
+            out.println("<title>EDIÇÃO DE DISCIPLINA</title>");
             out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"cadastro.css\">");
             out.println("</head>");
             out.println("<body>");
-            out.println("	<form action='upDisciplinas'>\n" +
-"	<div>	<div class= 'cont'>\n" +
-"			CÓDIGO <div>"+ "<select class = 'select' name = 'codigo'>"
+            out.println("<form action='Disciplinas' method='POST'>"
+                    + "<button class='home'>VOLTAR</button></form>"
+                    + "</form>"
+                    + "<form action='upDisciplinas'>\n"
+                    + "	<div>	<div class= 'cont'>\n"
+                    + "	CÓDIGO <div>" + "<select class = 'select' name = 'codigo'>"
                     + "<option value='-'> SELECIONE UMA DISCIPLINA</option>");
-                   for(int i = 0; i< disciplinas.size();i++){
-                       out.println("<option value ='"+disciplinas.get(i).getCod()+"' >"+disciplinas.get(i).getCod()+"</option>");
-                   } 
-                   
-            out.println("</select>"+"</div>\n" +
-"			NOME <div><input name=\"nome\" type=\"text\"/ placeholder='EX: PRGRAMAÇÃO 1'></div>\n" +
-"			CARGA HORÁRIA <div><input name=\"carga\" type=\"text\"/ placeholder='EX: 4'></div>\n" +
-"			PRÉ-REQUISITO 1 <div><select class = 'select' name= 'pq1'>"
+            for (int i = 0; i < disciplinas.size(); i++) {
+                out.println("<option value ='" + disciplinas.get(i).getCod() + "' >" + disciplinas.get(i).getCod() + 
+                        " - "+disciplinas.get(i).getNome()+"</option>");
+            }
+
+            out.println("</select>" + "</div>\n"
+                    + "NOME <div><input name=\"nome\" type=\"text\"/ placeholder='EX: PROGRAMAÇÃO 1'></div>\n"
+                    + "CARGA HORÁRIA <div><input name=\"carga\" type=\"text\"/ placeholder='EX: 4'></div>\n"
+                    + "PRÉ-REQUISITO 1 <div><select class = 'select' name= 'pq1'>"
                     + "<option value='-'> SELECIONE UM PRÉ-REQUISITO</option>");
-                   for(int i = 0; i< disciplinas.size();i++){
-                       out.println("<option value ='"+disciplinas.get(i).getCod()+"' >"+disciplinas.get(i).getCod()+"</option>");
-                   } 
+            for (int i = 0; i < disciplinas.size(); i++) {
+                out.println("<option value ='" + disciplinas.get(i).getCod() + "' >" + disciplinas.get(i).getCod() + 
+                        " - "+disciplinas.get(i).getNome()+"</option>");
+            }
             out.println("</select></div>");
             out.println("PRÉ-REQUISITO 2 <div>"
                     + "<select class = 'select' name = 'pq2'>"
                     + "<option value='-'> SELECIONE UM PRÉ-REQUISITO</option>");
-                   for(int i = 0; i< disciplinas.size();i++){
-                       out.println("<option value ='"+disciplinas.get(i).getCod()+"' >"+disciplinas.get(i).getCod()+"</option>");
-                   } 
-                   
-            out.println("</select>"+
-"			<div><button type=\"submit\" onclick='editar()'>ENVIAR</button></div>\n" +
-"	</div>	</div>\n" +
-"	</form>");
+            for (int i = 0; i < disciplinas.size(); i++) {
+                out.println("<option value ='" + disciplinas.get(i).getCod() + "' >" + disciplinas.get(i).getCod() + 
+                        " - "+disciplinas.get(i).getNome()+"</option>");
+            }
+
+            out.println("</select>"
+                    + "			<div><button type=\"submit\" onclick='editar()'>ENVIAR</button></div>\n"
+                    + "	</div>	</div>\n"
+                    + "	</form>");
             out.println("</body>");
             request.setCharacterEncoding("UTF-8");
             out.println("<script language = 'JavaScrpit'charset='UTF-8'>"
@@ -74,20 +79,22 @@ public class upDisciplinas extends HttpServlet {
             d1.setCod(request.getParameter("codigo").toUpperCase());
             d1.setNome(request.getParameter("nome"));
             d1.setCrd(Integer.parseInt(request.getParameter("carga")));
-            if(request.getParameter("pq1").equals("-")){
-               // deixa null 
-            }else{
-            d1.setPq1(request.getParameter("pq1"));}
-            if(request.getParameter("pq2").equals("-")){
+            if (request.getParameter("pq1").equals("-")) {
+                // deixa null 
+            } else {
+                d1.setPq1(request.getParameter("pq1"));
+            }
+            if (request.getParameter("pq2").equals("-")) {
                 // deixa null
-            }else{
-            d1.setPq2(request.getParameter("pq2"));}
-            out.println("if("+d.upDisciplina(d1)+"){\n "+
-                " window.alert('Salvo com sucesso!'); \n"+
-           " } else{"+
-                " alert('Erro ao salvar');}\n ");
-   
-                    out.println( " }</script>");
+            } else {
+                d1.setPq2(request.getParameter("pq2"));
+            }
+            out.println("if(" + d.upDisciplina(d1) + "){\n "
+                    + " window.alert('Salvo com sucesso!'); \n"
+                    + " } else{"
+                    + " alert('Erro ao salvar');}\n ");
+
+            out.println(" }</script>");
 
             out.println("</body>");
             out.println("</html>");

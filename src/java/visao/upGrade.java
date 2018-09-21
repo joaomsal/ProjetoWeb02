@@ -44,14 +44,16 @@ public class upGrade extends HttpServlet {
             out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"grade.css\">");
             out.println("</head>");
             out.println("<body>");
-             out.println("<form>"
+             out.println("<form action='GradeCurricular?curso="+curso+"' method='POST' >"
+                    + "<button class='home'>VOLTAR</button></form>"
+                    + "<form>"
                     + "<div class = 'sec'>"
                     + " <section id = 'up' class = 'sct'> "
                     + " <h2>EDIÇÃO</h2>"
                     + "CÓDIGO<div>" + "<select class = 'select' name = 'upC'>"
                     + "<option value='-'>SELECIONE UMA DISCIPLINA</option>");
             for (int i = 0; i < disciplinas.size(); i++) {
-                out.println("<option value ='" + disciplinas.get(i).getCod() + "' >" + disciplinas.get(i).getCod() + "</option>");
+                out.println("<option value ='" + disciplinas.get(i).getCod() + "' >" + disciplinas.get(i).getCod() + " - "+disciplinas.get(i).getNome()+"</option>");
             }
 
             out.println("</select>" + "</div>"

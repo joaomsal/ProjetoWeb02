@@ -81,20 +81,21 @@ public class Disciplinas extends HttpServlet {
                     + " \n</section>  </div>"
                     + "</form>");
 
-            out.println("<form>"
+            out.println("<form action='Disciplinas'>"
                     + "<div class = 'sec'>"
                     + " <section id = 'del' class = 'sct' >"
                     + "<h2>EXCLUSÃO</h2>"
                     + "CÓDIGO<div>" + "<select class = 'select' name = 'disc'>"
                     + "<option value='-'>SELECIONE UMA DISCIPLINA</option>");
             for (int i = 0; i < disciplinas.size(); i++) {
-                out.println("<option value ='" + disciplinas.get(i).getCod() + "' >" + disciplinas.get(i).getCod() + "</option>");
+                out.println("<option value ='" + disciplinas.get(i).getCod() + "' >" + disciplinas.get(i).getCod() + 
+                        " - "+disciplinas.get(i).getNome()+"</option>");
             }
 
             out.println("</select>" + "</div>"
 //                    + "<input type='hidden' value='" + curso + "' name= 'curso'/>"
                     + "<div class='bta'>"
-                    + " <button type='submit' onclick='del()' >DELETAR DISCIPLINA</button></div>"
+                    + " <button type='submit' onclick='del1()' >DELETAR DISCIPLINA</button></div>"
                     + "\n</section> </div>"
                     + " </form>");
             out.println("</body>");
@@ -103,7 +104,8 @@ public class Disciplinas extends HttpServlet {
             disciplinaDAO d = new disciplinaDAO();
             request.setCharacterEncoding("UTF-8");
             out.println("<script language = 'JavaScrpit' >");
-            out.println("function del(){");
+            out.println("function del1(){ \n del(); \n window.location.reload();}\n"
+                    + "function del(){  ");
             d.delDisciplina(request.getParameter("disc").toUpperCase());
             out.println("}</script>");
             

@@ -83,14 +83,15 @@ public class GradeCurricular extends HttpServlet {
                     + " \n</section>  </div>"
                     + "</form>");
 
-            out.println("<form>"
+            out.println("<form action='GradeCurricular' method='POST'>"
                     + "<div class = 'sec'>"
                     + " <section id = 'del' class = 'sct' >"
                     + "<h2>EXCLUSÃO</h2>"
                     + "CÓDIGO<div>" + "<select class = 'select' name = 'disc'>"
                     + "<option value='-'>SELECIONE UMA DISCIPLINA</option>");
             for (int i = 0; i < disciplinas.size(); i++) {
-                out.println("<option value ='" + disciplinas.get(i).getCod() + "' >" + disciplinas.get(i).getCod() + "</option>");
+                out.println("<option value ='" + disciplinas.get(i).getCod() + "' >" + disciplinas.get(i).getCod() +
+                        " - "+disciplinas.get(i).getNome()+ "</option>");
             }
 
             out.println("</select>" + "</div>"
@@ -104,7 +105,7 @@ public class GradeCurricular extends HttpServlet {
             // funções javascript
             request.setCharacterEncoding("UTF-8");
             out.println("<script language = 'JavaScrpit' >");
-            out.println("function del(){");
+            out.println("function del(){ ");
             d.delDisciplina(request.getParameter("disc").toUpperCase(),request.getParameter("curso"));
             out.println("}</script>");
 

@@ -155,4 +155,9 @@ select{
 option{
     background: #2a0845;
     color: white;
+    text-align: center;
+}
+
+.home{
+    width: 10%;
 }
